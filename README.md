@@ -1,5 +1,5 @@
 # Ruined Library
-
+### **NOTICE**: Generated using Claude AI
 An unofficial, fan-made theme for **Obsidian** and [Digital Garden](https://github.com/oleeskild/obsidian-digital-garden),
 in the spirit of *Library of Ruina*: near-black warm paper, parchment text, thin gold rules, framed
 panels, and main-menu-style buttons for a home page. It uses no game art, logo or fonts, and is not
