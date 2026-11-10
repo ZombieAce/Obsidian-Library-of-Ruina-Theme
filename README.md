@@ -8,7 +8,9 @@ affiliated with Project Moon.
 
 It comes in a dark theme (the intended look) and a light theme.
 
-<image src=preview.png></image>
+<image src=https://raw.githubusercontent.com/ZombieAce/Obsidian-Library-of-Ruina-Theme/refs/heads/master/img/preview1.png></image>
+<image src=https://raw.githubusercontent.com/ZombieAce/Obsidian-Library-of-Ruina-Theme/refs/heads/master/img/preview2.png></image>
+<image src=https://raw.githubusercontent.com/ZombieAce/Obsidian-Library-of-Ruina-Theme/refs/heads/master/img/preview3.png></image>
 ## Obsidian
 
 Copy `theme.css` and `manifest.json` into `<your vault>/.obsidian/themes/Ruined Library/`, then choose
