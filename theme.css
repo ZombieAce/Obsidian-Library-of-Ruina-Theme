@@ -1,0 +1,567 @@
+/* Ruined Library: an unofficial, fan-made Obsidian theme in the spirit of Library of Ruina.
+   Works in Obsidian and on a Digital Garden site. No game art, logo or fonts are used.
+   Menu buttons: add `cssclasses: ruina-menu` to a note whose body is a list of links. */
+
+/* ── Palette ────────────────────────────────────────────────────────────────
+   Every colour below is a variable: change it here to retune the whole theme. */
+
+.theme-dark {
+  --ruina-ink-0: #0a0807;
+  --ruina-ink-1: #100d0a;
+  --ruina-ink-2: #17120d;
+  --ruina-ink-3: #211a12;
+  --ruina-ink-4: #2c2218;
+  --ruina-text: #eadfc4;
+  --ruina-text-muted: #b3a583;
+  --ruina-text-faint: #7a6e56;
+  --ruina-gold: #d8b45e;
+  --ruina-gold-bright: #f2d68a;
+  --ruina-gold-deep: #9b7a31;
+  --ruina-crimson: #b24237;
+  --ruina-line: rgba(216, 180, 94, 0.28);
+  --ruina-line-strong: rgba(216, 180, 94, 0.6);
+  --ruina-glow: rgba(216, 180, 94, 0.22);
+  --ruina-shade: rgba(0, 0, 0, 0.55);
+  --ruina-on-gold: #17110a;
+}
+
+.theme-light {
+  --ruina-ink-0: #f7f1e1;
+  --ruina-ink-1: #f1e9d3;
+  --ruina-ink-2: #e8dec2;
+  --ruina-ink-3: #ded2b3;
+  --ruina-ink-4: #d2c5a3;
+  --ruina-text: #2b2218;
+  --ruina-text-muted: #5f523b;
+  --ruina-text-faint: #8f8062;
+  --ruina-gold: #86611c;
+  --ruina-gold-bright: #a8761f;
+  --ruina-gold-deep: #b99448;
+  --ruina-crimson: #8f2d25;
+  --ruina-line: rgba(90, 66, 20, 0.32);
+  --ruina-line-strong: rgba(90, 66, 20, 0.62);
+  --ruina-glow: rgba(134, 97, 28, 0.2);
+  --ruina-shade: rgba(60, 44, 20, 0.18);
+  --ruina-on-gold: #fbf5e4;
+}
+
+.theme-dark,
+.theme-light {
+  --ruina-font-display: "Cinzel", "Trajan Pro", "Optima", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --ruina-font-body: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, "Times New Roman", serif;
+
+  /* Obsidian's own variables, pointed at the palette */
+  --background-primary: var(--ruina-ink-1);
+  --background-primary-alt: var(--ruina-ink-2);
+  --background-secondary: var(--ruina-ink-2);
+  --background-secondary-alt: var(--ruina-ink-0);
+  --background-modifier-hover: color-mix(in srgb, var(--ruina-gold) 10%, transparent);
+  --background-modifier-active-hover: color-mix(in srgb, var(--ruina-gold) 18%, transparent);
+  --background-modifier-border: var(--ruina-line);
+  --background-modifier-border-hover: var(--ruina-line-strong);
+  --background-modifier-border-focus: var(--ruina-gold);
+  --background-modifier-form-field: var(--ruina-ink-0);
+  --background-modifier-box-shadow: var(--ruina-shade);
+  --background-modifier-cover: var(--ruina-shade);
+  --background-modifier-error: var(--ruina-crimson);
+  --background-modifier-success: #5f7f4a;
+
+  --text-normal: var(--ruina-text);
+  --text-muted: var(--ruina-text-muted);
+  --text-faint: var(--ruina-text-faint);
+  --text-on-accent: var(--ruina-on-gold);
+  --text-accent: var(--ruina-gold);
+  --text-accent-hover: var(--ruina-gold-bright);
+  --text-error: var(--ruina-crimson);
+  --text-highlight-bg: color-mix(in srgb, var(--ruina-gold) 30%, transparent);
+  --text-selection: color-mix(in srgb, var(--ruina-gold) 32%, transparent);
+
+  --interactive-normal: var(--ruina-ink-3);
+  --interactive-hover: var(--ruina-ink-4);
+  --interactive-accent: var(--ruina-gold);
+  --interactive-accent-hover: var(--ruina-gold-bright);
+
+  --link-color: var(--ruina-gold);
+  --link-color-hover: var(--ruina-gold-bright);
+  --link-decoration: underline;
+  --link-decoration-hover: underline;
+  --link-unresolved-color: var(--ruina-text-faint);
+  --link-unresolved-opacity: 1;
+  --link-unresolved-decoration-color: var(--ruina-text-faint);
+  --link-external-color: var(--ruina-gold);
+  --link-external-color-hover: var(--ruina-gold-bright);
+
+  --font-text-theme: var(--ruina-font-body);
+  --font-interface-theme: var(--ruina-font-body);
+  --font-text: var(--ruina-font-body);
+  --font-interface: var(--ruina-font-body);
+
+  --h1-font: var(--ruina-font-display);
+  --h2-font: var(--ruina-font-display);
+  --h3-font: var(--ruina-font-display);
+  --h4-font: var(--ruina-font-display);
+  --h5-font: var(--ruina-font-display);
+  --h6-font: var(--ruina-font-display);
+  --h1-color: var(--ruina-gold-bright);
+  --h2-color: var(--ruina-gold);
+  --h3-color: var(--ruina-gold);
+  --h4-color: var(--ruina-text);
+  --h5-color: var(--ruina-text-muted);
+  --h6-color: var(--ruina-text-faint);
+  --h1-weight: 600;
+  --h2-weight: 600;
+  --h3-weight: 600;
+  --h4-weight: 600;
+  --h5-weight: 600;
+  --h6-weight: 600;
+  --h1-size: 1.9em;
+  --h2-size: 1.4em;
+  --h3-size: 1.15em;
+  --h4-size: 1.02em;
+  --h1-line-height: 1.25;
+
+  --bold-color: var(--ruina-gold-bright);
+  --italic-color: var(--ruina-text);
+  --hr-color: var(--ruina-line-strong);
+  --hr-thickness: 1px;
+
+  --blockquote-border-color: var(--ruina-gold-deep);
+  --blockquote-border-thickness: 2px;
+  --blockquote-background-color: color-mix(in srgb, var(--ruina-gold) 6%, transparent);
+  --blockquote-color: var(--ruina-text-muted);
+  --blockquote-style: italic;
+
+  --code-background: var(--ruina-ink-0);
+  --code-normal: var(--ruina-gold-bright);
+  --code-comment: var(--ruina-text-faint);
+  --code-radius: 0;
+
+  --tag-color: var(--ruina-gold-bright);
+  --tag-background: color-mix(in srgb, var(--ruina-crimson) 30%, transparent);
+  --tag-background-hover: color-mix(in srgb, var(--ruina-crimson) 48%, transparent);
+  --tag-border-color: color-mix(in srgb, var(--ruina-crimson) 70%, transparent);
+  --tag-border-width: 1px;
+  --tag-radius: 0;
+  --tag-padding-x: 0.65em;
+
+  --table-border-color: var(--ruina-line);
+  --table-header-background: color-mix(in srgb, var(--ruina-gold) 12%, transparent);
+  --table-header-color: var(--ruina-gold-bright);
+  --table-header-weight: 600;
+  --table-row-alt-background: color-mix(in srgb, var(--ruina-gold) 4%, transparent);
+
+  --list-marker-color: var(--ruina-gold-deep);
+  --checkbox-color: var(--ruina-gold);
+  --checkbox-radius: 0;
+  --checklist-done-color: var(--ruina-text-faint);
+
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: var(--ruina-line);
+  --scrollbar-active-thumb-bg: var(--ruina-line-strong);
+
+  --radius-s: 0;
+  --radius-m: 0;
+  --radius-l: 0;
+  --button-radius: 0;
+  --input-radius: 0;
+
+  --callout-radius: 0;
+  --callout-border-width: 1px;
+  --callout-border-opacity: 0.45;
+  --callout-padding: 0.9em 1.1em;
+  --callout-title-color: inherit;
+  --callout-title-padding: 0 0 0.25em 0;
+}
+
+/* ── Page, text, headings ───────────────────────────────────────────────────── */
+
+body {
+  background-color: var(--ruina-ink-1);
+}
+
+.theme-dark body,
+body.theme-dark {
+  background-image:
+    radial-gradient(ellipse 80% 55% at 50% -10%, rgba(216, 180, 94, 0.07), transparent 70%),
+    radial-gradient(ellipse 120% 80% at 50% 120%, rgba(0, 0, 0, 0.5), transparent 60%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--text-selection);
+}
+
+.markdown-rendered h1,
+.markdown-preview-view h1,
+.content h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding-bottom: 0.45em;
+  margin-bottom: 0.8em;
+  border-bottom: 1px solid var(--ruina-line-strong);
+  background: linear-gradient(90deg, var(--ruina-gold-deep), transparent 55%) bottom / 100% 1px no-repeat;
+  border-image: none;
+}
+
+.markdown-rendered h2,
+.markdown-preview-view h2,
+.content h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--ruina-line);
+}
+
+.markdown-rendered h3,
+.markdown-preview-view h3,
+.content h3,
+.markdown-rendered h4,
+.markdown-preview-view h4,
+.content h4 {
+  letter-spacing: 0.08em;
+}
+
+.markdown-rendered strong,
+.markdown-preview-view strong,
+.content strong {
+  color: var(--bold-color);
+}
+
+.markdown-rendered a,
+.markdown-preview-view a,
+.content a {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  transition: color 0.15s ease, text-shadow 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.markdown-rendered a:hover,
+.markdown-preview-view a:hover,
+.content a:hover {
+  text-shadow: 0 0 10px var(--ruina-glow);
+  text-decoration-color: currentColor;
+}
+
+/* A thin gold rule with a diamond at its centre. */
+.markdown-rendered hr,
+.markdown-preview-view hr,
+.content hr {
+  height: 1px;
+  border: 0;
+  overflow: visible;
+  margin: 2.2em 0;
+  background: linear-gradient(90deg, transparent, var(--ruina-line-strong) 18%, var(--ruina-line-strong) 82%, transparent);
+}
+
+.markdown-rendered hr::after,
+.markdown-preview-view hr::after,
+.content hr::after {
+  content: "";
+  display: block;
+  width: 9px;
+  height: 9px;
+  margin: -5px auto 0;
+  background: var(--ruina-ink-1);
+  border: 1px solid var(--ruina-gold);
+  transform: rotate(45deg);
+}
+
+.markdown-rendered blockquote,
+.markdown-preview-view blockquote,
+.content blockquote {
+  padding: 0.6em 1.1em;
+  border-radius: 0;
+}
+
+.markdown-rendered code,
+.markdown-preview-view code,
+.content code {
+  border: 1px solid var(--ruina-line);
+  padding: 0.05em 0.35em;
+}
+
+.markdown-rendered pre,
+.markdown-preview-view pre,
+.content pre {
+  border: 1px solid var(--ruina-line);
+  border-left: 2px solid var(--ruina-gold-deep);
+  background: var(--ruina-ink-0);
+  border-radius: 0;
+}
+
+.markdown-rendered pre code,
+.markdown-preview-view pre code,
+.content pre code {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-rendered table th,
+.markdown-preview-view table th,
+.content table th {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85em;
+  font-family: var(--ruina-font-display);
+}
+
+.markdown-rendered table tbody tr:nth-child(even) td,
+.markdown-preview-view table tbody tr:nth-child(even) td,
+.content table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt-background);
+}
+
+.markdown-rendered img,
+.markdown-preview-view img,
+.content img {
+  border: 1px solid var(--ruina-line);
+}
+
+/* ── Callouts: dark panels edged in the callout's own colour ─────────────── */
+
+.callout {
+  font-family: var(--ruina-font-body);
+  background-color: color-mix(in srgb, rgb(var(--callout-color)) 8%, var(--ruina-ink-2));
+  border: 1px solid rgba(var(--callout-color), var(--callout-border-opacity));
+  border-left-width: 3px;
+  border-radius: 0;
+}
+
+.callout-title {
+  font-family: var(--ruina-font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9em;
+  color: rgb(var(--callout-color));
+}
+
+/* ── Atlas statblocks: a framed plate ───────────────────────────────────────── */
+
+.atlas-fantasy-statblock {
+  border: 1px solid var(--ruina-line-strong);
+  outline: 1px solid var(--ruina-line);
+  outline-offset: 3px;
+  background-color: color-mix(in srgb, var(--ruina-ink-2) 80%, transparent);
+}
+
+/* ── Main-menu buttons ───────────────────────────────────────────────────────
+   Give a note `cssclasses: ruina-menu` and write its links as a list:
+
+     - [[Campaign Log]]
+     - [[The Party]]
+
+   Each list item becomes a menu button. Reading view in Obsidian; the whole
+   page on a Digital Garden site. Variants: add `ruina-menu-row` for a row of
+   buttons, `ruina-menu-left` to align the stack to the left. */
+
+.ruina-menu {
+  --ruina-menu-width: 27rem;
+  /* Obsidian underlines links through these; a menu button is not underlined. */
+  --link-decoration: none;
+  --link-decoration-hover: none;
+}
+
+.ruina-menu h1 {
+  text-align: center;
+  border-bottom: 0;
+  background: none;
+  font-size: 2.3em;
+  letter-spacing: 0.22em;
+  text-shadow: 0 0 28px var(--ruina-glow);
+  margin-top: 0.4em;
+}
+
+.ruina-menu h1::after {
+  content: "";
+  display: block;
+  width: min(18rem, 70%);
+  height: 1px;
+  margin: 0.55em auto 0;
+  background: linear-gradient(90deg, transparent, var(--ruina-gold), transparent);
+}
+
+.ruina-menu p {
+  text-align: center;
+  color: var(--ruina-text-muted);
+  font-style: italic;
+}
+
+.ruina-menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: min(var(--ruina-menu-width), 100%);
+  margin: 2.2rem auto;
+  padding: 0;
+  list-style: none;
+}
+
+.ruina-menu ul > li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ruina-menu ul > li::marker,
+.ruina-menu ul > li .list-bullet {
+  display: none;
+  content: "";
+}
+
+.ruina-menu ul > li a,
+.ruina-menu ul > li a.internal-link,
+.ruina-menu ul > li a.external-link {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 0.95rem 1.4rem 0.95rem 3.1rem;
+  font-family: var(--ruina-font-display);
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-shadow: none;
+  color: var(--ruina-text);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--ruina-ink-0) 88%, transparent), color-mix(in srgb, var(--ruina-ink-3) 70%, transparent));
+  border: 1px solid var(--ruina-line);
+  box-shadow: 0 2px 10px var(--ruina-shade);
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.25s ease,
+    transform 0.18s ease,
+    background-color 0.18s ease;
+}
+
+/* Corner brackets, top-left and bottom-right. */
+.ruina-menu ul > li a::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--ruina-gold-deep), var(--ruina-gold-deep)) left top / 12px 1px no-repeat,
+    linear-gradient(var(--ruina-gold-deep), var(--ruina-gold-deep)) left top / 1px 12px no-repeat,
+    linear-gradient(var(--ruina-gold-deep), var(--ruina-gold-deep)) right bottom / 12px 1px no-repeat,
+    linear-gradient(var(--ruina-gold-deep), var(--ruina-gold-deep)) right bottom / 1px 12px no-repeat;
+  transition: inset 0.2s ease, filter 0.2s ease;
+}
+
+/* The marker diamond and, on hover, the light that sweeps across. */
+.ruina-menu ul > li a::after {
+  content: "";
+  position: absolute;
+  left: 1.3rem;
+  top: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: -0.25rem;
+  border: 1px solid var(--ruina-gold-deep);
+  transform: rotate(45deg);
+  transition: background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, left 0.2s ease;
+}
+
+.ruina-menu ul > li a:hover,
+.ruina-menu ul > li a:focus-visible {
+  color: var(--ruina-gold-bright);
+  text-decoration: none;
+  text-shadow: none;
+  border-color: var(--ruina-gold);
+  background:
+    linear-gradient(100deg, transparent 0%, var(--ruina-glow) 45%, transparent 70%) -140% 0 / 60% 100% no-repeat,
+    linear-gradient(90deg, color-mix(in srgb, var(--ruina-gold) 16%, var(--ruina-ink-1)), color-mix(in srgb, var(--ruina-gold) 6%, var(--ruina-ink-2)));
+  box-shadow:
+    0 0 22px var(--ruina-glow),
+    inset 0 0 22px color-mix(in srgb, var(--ruina-gold) 9%, transparent);
+  transform: translateX(6px);
+  animation: ruina-sweep 0.7s ease-out 1 forwards;
+}
+
+.ruina-menu ul > li a:hover::before,
+.ruina-menu ul > li a:focus-visible::before {
+  inset: 2px;
+  filter: brightness(1.5);
+}
+
+.ruina-menu ul > li a:hover::after,
+.ruina-menu ul > li a:focus-visible::after {
+  left: 1.5rem;
+  background: var(--ruina-gold);
+  border-color: var(--ruina-gold-bright);
+  box-shadow: 0 0 10px var(--ruina-gold);
+}
+
+.ruina-menu ul > li a:focus-visible {
+  outline: 2px solid var(--ruina-gold-bright);
+  outline-offset: 3px;
+}
+
+.ruina-menu ul > li a:active {
+  transform: translateX(6px) translateY(1px);
+  box-shadow: 0 0 10px var(--ruina-glow), inset 0 2px 8px var(--ruina-shade);
+  filter: brightness(0.92);
+}
+
+@keyframes ruina-sweep {
+  from { background-position: -140% 0, 0 0; }
+  to   { background-position: 240% 0, 0 0; }
+}
+
+/* A link to a note that does not exist (yet): present, but unlit. */
+.ruina-menu ul > li a.is-unresolved,
+.ruina-menu ul > li span.atlas-sb-unresolved-link {
+  opacity: 0.55;
+}
+
+/* Variants. */
+.ruina-menu-left ul {
+  margin-left: 0;
+}
+
+.ruina-menu-row ul {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.ruina-menu-row ul > li {
+  flex: 1 1 11rem;
+}
+
+.ruina-menu.ruina-menu-row ul > li a,
+.ruina-menu.ruina-menu-row ul > li a.internal-link {
+  text-align: center;
+  /* the extra left padding balances the letter-spacing after the last letter */
+  padding: 0.95rem 1.4rem 0.95rem calc(1.4rem + 0.2em);
+}
+
+.ruina-menu-row ul > li a::after {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ruina-menu ul > li a,
+  .ruina-menu ul > li a::before,
+  .ruina-menu ul > li a::after {
+    transition: none;
+    animation: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ruina-menu ul > li a {
+    padding-right: 0.9rem;
+    letter-spacing: 0.14em;
+    font-size: 0.95rem;
+  }
+}
+
+/* Light parchment: tags in crimson ink. */
+.theme-light {
+  --tag-color: var(--ruina-crimson);
+  --tag-background: color-mix(in srgb, var(--ruina-crimson) 12%, transparent);
+}
